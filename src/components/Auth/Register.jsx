@@ -1,0 +1,149 @@
+import { useState } from "react";
+import Button from "../Ui/Button";
+import AuthLayout from "../Ui/AuthLayout";
+import errorIcon from "../../assets/imgs/icon-error.svg"
+
+function Register(){
+
+    const [formData,setFormData] =useState({
+        userName:"",
+        email:"",
+        password:"",
+        confirmPassword:"",
+        address:"",
+        phone:""
+    });
+    
+    const[errors,setErrors] =useState({});
+
+    function handleChange(e){
+        setFormData({...formData,[e.target.name]: e.target.value});
+    }
+
+    function handleSubmit(event){
+        event.preventDefault();
+        formValidation();
+        console.log("errors",errors);
+        console.log(formData);
+    }
+
+    function formValidation(){ 
+
+        const newErrors ={};
+        const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/;
+
+        for( const key in formData){
+
+            const value = formData[key].trim();
+            console.log("key",key);
+
+            if(value === ""){
+                 newErrors[key] = `${key}  is required`;     
+            }
+
+            if(key === "userName" && value.length < 3){
+                newErrors.userName = "The name is too short, min:3 characters";
+            }
+
+            if(key === "userName" && value.length > 30){
+                newErrors.userName = "The name is too long, max:30 characters"
+            }
+
+            if(key === "email" && !value.includes("@")){
+                newErrors.email = "The email address should contain an '@' symbol";
+            }
+
+            if(key === "password" && !passwordRegex.test(value)){
+                newErrors.password = "Password must contain one digit, one lowercase letter, one uppercase letter, one special character, and it must be 8-16 long."
+            }
+
+            if(key === "confirmPassword" && value != formData.password){
+                newErrors.confirmPassword = "Passwords do not match";
+            }
+
+            if(key === "address" && value.length <3){
+                newErrors.address =" Address too short must contain at least 3 characters"
+            }
+
+             if(key === "phone" && value.length != 10){
+                newErrors.phone = "Phone format not correct.";
+            }
+
+            if(key === "address" && value.length >50){
+                newErrors.address = " Address too long must not exceed 50 characters";
+            }
+
+        }
+
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    }
+
+    return(
+        
+        <AuthLayout 
+
+        Form = {
+        
+        <form id="form" onSubmit={handleSubmit}>
+
+          <div>
+            <input type="text" name="userName" className={`first_name ${errors.userName ? "invalid":""}`}  placeholder="Name" id="name" value={formData.userName} onChange={handleChange}></input>
+            {errors.userName ?
+            <span><img src={errorIcon} alt="error" className="error-icon"/></span> : null
+            }
+            <span className="error">{errors.userName}</span>
+          </div>
+
+         <div>
+            <input type="text" name="email" className={`email ${errors.email ? "invalid" : ""}`} placeholder="Email Address" id="email" value={formData.email} onChange={handleChange}></input>
+            {errors.email ?
+            <span><img src={errorIcon} alt="error" className="error-icon"/></span> : null
+            }
+            <span className="error">{errors.email}</span>
+          </div>
+
+          <div>
+            <input type="password" name="password" className={`password ${errors.password ? "invalid" : ""}`} placeholder="Password" id="pass" value={formData.password} onChange={handleChange}></input>
+            {errors.password ?
+            <span><img src={errorIcon} alt="error" className="error-icon"/></span> : null
+            }
+            <span className="error">{errors.password}</span>
+          </div>
+
+          <div>
+            <input type="password" name="confirmPassword" className={`confirmPassword ${errors.confirmPassword ? "invalid" : ""}`} placeholder="Confirm password" id="confass" value={formData.confirmPassword} onChange={handleChange}></input>
+            {errors.confirmPassword ?
+            <span><img src={errorIcon} alt="error" className="error-icon"/></span> : null
+            }
+            <span className="error">{errors.confirmPassword}</span>
+          </div>
+
+          <div>
+            <input type="text" name="phone" className={`phone ${errors.phone ? "invalid" : "" }`} placeholder="Phone number" id="phone" value={formData.phone} onChange={handleChange}></input>
+            {errors.phone ?
+            <span><img src={errorIcon} alt="error" className="error-icon"/></span> : null
+            }
+            <span className="error">{errors.phone}</span>
+          </div>
+
+          <div>
+            <input type="text" name="address" className={`address ${errors.address ? "invalid" : "" }`} placeholder="Address" id="address" value={formData.address} onChange={handleChange}></input>
+            {errors.address ?
+            <span><img src={errorIcon} alt="error" className="error-icon"/></span> : null
+            }
+            <span className="error">{errors.address}</span>
+          </div>
+
+          <Button Label="Register"/>
+          <p>By clicking the button, you are agreeing to our <span>Terms and Services</span></p>
+        </form>
+
+        }
+        />
+      
+    )
+
+}
+
+export default Register;
