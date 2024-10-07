@@ -1,5 +1,6 @@
 /////// Service that group Axios Http verbs 
 import axiosClient from "./axiosService";
+
 // Get
  export const getRequest = async (Url) => {
     try{
@@ -10,6 +11,7 @@ import axiosClient from "./axiosService";
         console.error("get request error: ",error);
     }
 };
+
 // Post 
 export const postRequest = async (Url,payload) => {
     try{
@@ -20,6 +22,7 @@ export const postRequest = async (Url,payload) => {
         console.error("post request error: ",error);
     }
 } 
+
 // Put
 export const putRequest = async (Url,payload) => {
     try{
@@ -30,6 +33,7 @@ export const putRequest = async (Url,payload) => {
         console.error("Put request error: ",error);
     }
 }
+
 // Delete 
 export const deleteRequest = async (Url) => {
     try{
