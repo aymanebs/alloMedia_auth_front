@@ -2,11 +2,12 @@ import { useState } from "react";
 import Button from "../Ui/Button";
 import AuthLayout from "../Ui/AuthLayout";
 import errorIcon from "../../assets/imgs/icon-error.svg"
+import { postRequest } from "../../services/requestsService";
 
 function Register(){
 
     const [formData,setFormData] =useState({
-        userName:"",
+        name:"",
         email:"",
         password:"",
         confirmPassword:"",
@@ -20,11 +21,14 @@ function Register(){
         setFormData({...formData,[e.target.name]: e.target.value});
     }
 
-    function handleSubmit(event){
+    async function handleSubmit(event){
+        const Url = register;
         event.preventDefault();
-        formValidation();
-        console.log("errors",errors);
-        console.log(formData);
+        if(formValidation){
+           const data= await postRequest(Url,formData);
+           console.log("data: ",data);
+        }
+           
     }
 
     function formValidation(){ 
@@ -41,12 +45,12 @@ function Register(){
                  newErrors[key] = `${key}  is required`;     
             }
 
-            if(key === "userName" && value.length < 3){
-                newErrors.userName = "The name is too short, min:3 characters";
+            if(key === "name" && value.length < 3){
+                newErrors.name = "The name is too short, min:3 characters";
             }
 
-            if(key === "userName" && value.length > 30){
-                newErrors.userName = "The name is too long, max:30 characters"
+            if(key === "name" && value.length > 30){
+                newErrors.name = "The name is too long, max:30 characters"
             }
 
             if(key === "email" && !value.includes("@")){
@@ -88,11 +92,11 @@ function Register(){
         <form id="form" onSubmit={handleSubmit}>
 
           <div>
-            <input type="text" name="userName" className={`first_name ${errors.userName ? "invalid":""}`}  placeholder="Name" id="name" value={formData.userName} onChange={handleChange}></input>
-            {errors.userName ?
+            <input type="text" name="name" className={`first_name ${errors.name ? "invalid":""}`}  placeholder="Name" id="name" value={formData.name} onChange={handleChange}></input>
+            {errors.name ?
             <span><img src={errorIcon} alt="error" className="error-icon"/></span> : null
             }
-            <span className="error">{errors.userName}</span>
+            <span className="error">{errors.name}</span>
           </div>
 
          <div>
