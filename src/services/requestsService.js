@@ -11,7 +11,6 @@ import axiosClient from "./axiosService";
         console.error("get request error: ",error);
     }
 };
-
 // Post 
 export const postRequest = async (Url,payload) => {
     try{
@@ -22,7 +21,6 @@ export const postRequest = async (Url,payload) => {
         console.error("post request error: ",error);
     }
 } 
-
 // Put
 export const putRequest = async (Url,payload) => {
     try{
