@@ -144,8 +144,8 @@ body {
 } */
 
 .right .form-group #form div input.invalid {
-    border-color: var(--clr-red);
-    border-width: 2px;
+    border-color: var(--clr-red) !important;
+    border-width: 2px !important;
 }
 
 .right .form-group #form div .error-icon {
