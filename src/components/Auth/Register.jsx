@@ -14,9 +14,13 @@ function Register(){
     });
     
     const[errors,setErrors] =useState({});
+
+    //Handling form change
     function handleChange(e){
         setFormData({...formData,[e.target.name]: e.target.value});
     }
+
+    // Handling form submit
     async function handleSubmit(event){
         const Url = "register";
         event.preventDefault();
@@ -26,6 +30,7 @@ function Register(){
         }   
     }
 
+    // validation function
     function formValidation(){ 
         const newErrors ={};
         const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/;
