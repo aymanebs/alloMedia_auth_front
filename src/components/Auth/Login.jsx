@@ -44,6 +44,14 @@ export default function Login(){
                 <span className="error">{errors?.password && errors.password.message}</span>     
              </div>
 
+             <div className="form-options">
+                        <label className="remember-me">
+                            <input  type="checkbox" />
+                            Remember me
+                        </label>
+                        <a href="#" className="forgot-password">Forgot password?</a>
+            </div>
+
             <Button/>
 
             </form>

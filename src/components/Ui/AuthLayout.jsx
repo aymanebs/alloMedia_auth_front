@@ -1,17 +1,17 @@
 import "../../assets/css/authStyle.css"
 
-function AuthLayout({Form}){
+function AuthLayout({Form,Title="Join our community"}){
 
     return(
         
         <div className="wrapper">
         <section className="left">
-          <h1>AlloMedia  un service de livraison à domicile</h1>
+          <h1>AlloMedia</h1>
           <p> Rejoigner message</p>
         </section>
         <section className="right">
           <h2 className="heading">
-            <span>Try it free 7 </span> then $20/mo. thereafter
+            <span>{Title}</span>
           </h2>
           <div className="form-group">
             {Form}
