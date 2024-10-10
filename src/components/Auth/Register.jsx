@@ -3,6 +3,7 @@ import Button from "../Ui/Button";
 import AuthLayout from "../Ui/AuthLayout";
 import errorIcon from "../../assets/imgs/icon-error.svg"
 import { postRequest } from "../../services/requestsService";
+import { Navigate } from "react-router-dom";
 function Register(){
     const [formData,setFormData] =useState({
         name:"",
@@ -15,6 +16,8 @@ function Register(){
     
     const[errors,setErrors] =useState({});
 
+    const[next,setNext] =useState(false);
+
     //Handling form change
     function handleChange(e){
         setFormData({...formData,[e.target.name]: e.target.value});
@@ -25,8 +28,8 @@ function Register(){
         const Url = "register";
         event.preventDefault();
         if(formValidation()){
-            const data = await postRequest(Url,formData);
-            console.log("register success",data);       
+            const response = await postRequest(Url,formData);   
+            response.status===200 && setNext(true);
         }   
     }
 
@@ -69,7 +72,8 @@ function Register(){
         return Object.keys(newErrors).length === 0;
     }
     return(
-        
+        <>
+        {next && <Navigate to="/login" replace="true"></Navigate>}
         <AuthLayout 
         Form = {
         
@@ -121,6 +125,7 @@ function Register(){
         </form>
         }
         />
+        </>
       
     )
 }

@@ -15,8 +15,10 @@ import axiosClient from "./axiosService";
 // Post 
 export const postRequest = async (Url,payload) => {
     try{
-        const response = await axiosClient.post(`/${Url}`,payload);
-        return response.data;
+        const response = await axiosClient.post(`/${Url}`,payload, {
+            validateStatus: () => true,
+        });
+        return response;
     }
     catch(error){
         console.error("post request error: ",error);
