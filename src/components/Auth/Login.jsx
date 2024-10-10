@@ -3,6 +3,7 @@ import AuthLayout from "../Ui/AuthLayout";
 import Button from "../Ui/Button";
 import errorIcon from "../../assets/imgs/icon-error.svg";
 import { postRequest } from "../../services/requestsService";
+import { Link } from "react-router-dom";
 
 export default function Login(){
 
@@ -29,7 +30,7 @@ export default function Login(){
 
 
             <div>
-                <input type="text" name="email" {...register("email",{required:"Email is required",pattern: { value: /\S+@\S+\.\S+/,message: "Entered value does not match email format",}})} className={`email ${errors?.email && "invalid"}`} placeholder="Email Address" id="email"  ></input>
+                <input type="text"  {...register("email",{required:"Email is required",pattern: { value: /\S+@\S+\.\S+/,message: "Entered value does not match email format",}})} className={`email ${errors?.email && "invalid"}`} placeholder="Email Address" id="email"  ></input>
                 {errors?.email &&
                     <span><img src={errorIcon} alt="error" className="error-icon"/></span>
                 }
@@ -37,7 +38,7 @@ export default function Login(){
             </div>
 
             <div>
-                <input type="password" name="password" {...register("password",{required:"Password is required",type:"password"})} className={`password ${errors?.password && "invalid"}`}  placeholder="Password" id="password" ></input>
+                <input type="password"  {...register("password",{required:"Password is required",type:"password"})} className={`password ${errors?.password && "invalid"}`}  placeholder="Password" id="password" ></input>
                 {errors?.password &&
                     <span><img src={errorIcon} alt="error" className="error-icon"/></span>
                 }
@@ -49,7 +50,7 @@ export default function Login(){
                             <input  type="checkbox" />
                             Remember me
                         </label>
-                        <a href="#" className="forgot-password">Forgot password?</a>
+                        <Link to="/resetPassword" className="forgot-password">Forgot password?</Link>
             </div>
 
             <Button/>

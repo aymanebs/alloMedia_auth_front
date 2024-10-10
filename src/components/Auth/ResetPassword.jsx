@@ -18,8 +18,8 @@ function ResetPassword(){
         const Url = "resetPassword";
 
         try{
-            await postRequest(Url,data);
-            setToNext(true);
+             const  response = await postRequest(Url,data);
+             response.status === 200 && setToNext(true);
            
         }
         catch(error){
