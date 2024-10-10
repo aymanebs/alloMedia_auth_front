@@ -10,12 +10,16 @@ import EmailVerification from "../components/Auth/EmailVerification";
 function AppRouter(){
   return(
      <Routes>
+
           <Route path="/register" element={<Register/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/resetPassword" element={<ResetPassword/>} />
           <Route path="/resetPassword/verifyOtp" element={<Otp/>} />
           <Route path="/resetPassword/verifyOtp/updatePassword" element={<UpdatePassword/>} />
           <Route path="/emailVerification" element={<EmailVerification/>}/>
+
+          
+    
      </Routes>
   );
 }

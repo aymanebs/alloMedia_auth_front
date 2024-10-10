@@ -29,7 +29,7 @@ html, body {
     overflow-x: hidden;
 }
 
-body {
+body .auth-layout-wrapper {
     font-size: var(--fs-default);
     font-family: "Poppins", sans-serif;
     min-height: 100vh;
