@@ -3,7 +3,7 @@ import "../../assets/css/authStyle.css"
 function AuthLayout({Form,Title="Join our community"}){
 
     return(
-        
+        <div className="auth-layout-wrapper">
         <div className="wrapper">
         <section className="left">
           <h1>AlloMedia</h1>
@@ -17,6 +17,7 @@ function AuthLayout({Form,Title="Join our community"}){
             {Form}
           </div>
         </section>
+      </div>
       </div>
       
     )
