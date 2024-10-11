@@ -164,9 +164,7 @@ body .auth-layout-wrapper {
     margin-top: 0.25rem;
 }
 
-
-
-.right .form-group #form .btn {
+.btn {
     width: 100%;
     padding: 1rem;
     background-color: var(--clr-green);
@@ -181,9 +179,11 @@ body .auth-layout-wrapper {
     transition: background-color 0.3s ease;
 }
 
-.right .form-group #form .btn:hover {
+.btn:hover {
     background-color: #2ba572;
 }
+
+
 
 .right .form-group #form p {
     font-size: 12px;

@@ -4,17 +4,28 @@ import Button from "../Ui/Button";
 import errorIcon from "../../assets/imgs/icon-error.svg";
 import { postRequest } from "../../services/requestsService";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Login(){
 
     const {register,handleSubmit,formState:{errors}} = useForm();
+    // const {loginStatus, setLoginStatus} = useState({
+    //     msg : ""
+    // });
 
     const Url = "login";
     
     const onFormSubmit = async (data) => {
+
         try{
-            await postRequest(Url,data);
+            const response = await postRequest(Url,data);
+            if(response.status == "200") toast.success("Logged in",{position: "top-right"}) ;
+            if(response.status == "400") toast.error("Invalid Email or Password",{position: "top-right"}) ;
+            if(response.status == "403") toast.warning("Please verify your email before logging in",{position: "top-right"}) ;
+            
         }
+    
         catch(error){
             console.error(error);
         }
@@ -46,10 +57,7 @@ export default function Login(){
              </div>
 
              <div className="form-options">
-                        <label className="remember-me">
-                            <input  type="checkbox" />
-                            Remember me
-                        </label>
+                        <Link to="/register" className="forgot-password">Not yet registered</Link>
                         <Link to="/resetPassword" className="forgot-password">Forgot password?</Link>
             </div>
 

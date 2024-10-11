@@ -2,6 +2,7 @@ import "../../assets/css/emailVerificationStyle.css"
 import { CheckCircle, XCircle } from 'lucide-react';
 import { useEffect, useState } from "react";
 import { Navigate, replace, useNavigate, useSearchParams } from 'react-router-dom';
+import { postRequest } from "../../services/requestsService";
 
 
 function EmailVerification(){
