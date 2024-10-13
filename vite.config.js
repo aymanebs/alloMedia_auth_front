@@ -6,12 +6,12 @@ import fs from 'fs'
 
 export default defineConfig({
   plugins: [react(), mkcert(), svgr()],
-  server: {
-    https: {
-      key: fs.readFileSync('/app/localhost-key.pem'),
-      cert: fs.readFileSync('/app/localhost.pem'),
-    },
-    host: '0.0.0.0',
-    port: 5173,
-  },
+  // server: {
+  //   https: {
+  //     key: fs.readFileSync('/app/localhost-key.pem'),
+  //     cert: fs.readFileSync('/app/localhost.pem'),
+  //   },
+  //   host: '0.0.0.0',
+  //   port: 5173,
+  // },
 })
