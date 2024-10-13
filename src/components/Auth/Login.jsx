@@ -22,7 +22,7 @@ export default function Login(){
             const response = await postRequest(Url,data);
             if(response.status == "200") toast.success("Logged in",{position: "top-right"}) ;
             if(response.status == "400") toast.error("Invalid Email or Password",{position: "top-right"}) ;
-            if(response.status == "403") toast.warning("Please verify your email before logging in",{position: "top-right"}) ;
+            if(response.status == "403") toast.warning("Please validate your email before logging in",{position: "top-right"}) ;
             
         }
     
