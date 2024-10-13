@@ -4,6 +4,7 @@ import AuthLayout from "../Ui/AuthLayout";
 import errorIcon from "../../assets/imgs/icon-error.svg"
 import { postRequest } from "../../services/requestsService";
 import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
 function Register(){
     const [formData,setFormData] =useState({
         name:"",
@@ -30,6 +31,7 @@ function Register(){
         if(formValidation()){
             const response = await postRequest(Url,formData);   
             response.status===200 && setNext(true);
+            response.status===400 && toast.error("Email already registered");
         }   
     }
 

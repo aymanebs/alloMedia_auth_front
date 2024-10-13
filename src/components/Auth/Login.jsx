@@ -10,9 +10,6 @@ import { toast } from "react-toastify";
 export default function Login(){
 
     const {register,handleSubmit,formState:{errors}} = useForm();
-    // const {loginStatus, setLoginStatus} = useState({
-    //     msg : ""
-    // });
 
     const Url = "login";
     
