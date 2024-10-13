@@ -29,7 +29,7 @@ html, body {
     overflow-x: hidden;
 }
 
-body {
+body .auth-layout-wrapper {
     font-size: var(--fs-default);
     font-family: "Poppins", sans-serif;
     min-height: 100vh;
@@ -164,9 +164,7 @@ body {
     margin-top: 0.25rem;
 }
 
-
-
-.right .form-group #form .btn {
+.btn {
     width: 100%;
     padding: 1rem;
     background-color: var(--clr-green);
@@ -181,9 +179,11 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.right .form-group #form .btn:hover {
+.btn:hover {
     background-color: #2ba572;
 }
+
+
 
 .right .form-group #form p {
     font-size: 12px;
